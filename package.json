@@ -10,6 +10,7 @@
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
     "flux": "^2.1.1",
+    "jest-cli": "^0.8.2",
     "material-ui": "^0.14.4",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
@@ -18,7 +19,6 @@
   },
   "devDependencies": {
     "browserify": "^13.0.0",
-    "jest-cli": "^0.4.3",
     "watchify": "^2.1.1"
   },
   "scripts": {

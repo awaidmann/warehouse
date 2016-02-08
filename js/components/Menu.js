@@ -1,7 +1,7 @@
-const React = require('react')
-const MUI = require('material-ui')
+import React, { Component } from 'react'
+import Material from 'material-ui'
 
-class Menu extends React.Component {
+export default class Menu extends Component {
   constructor(props) {
     super(props)
   }
@@ -10,5 +10,3 @@ class Menu extends React.Component {
     return <div>Hello World</div>
   }
 }
-
-module.exports = Menu

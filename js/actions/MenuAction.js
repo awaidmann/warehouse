@@ -1,7 +1,5 @@
-class MenuAction {
+export default class MenuAction {
   constructor() {
 
   }
 }
-
-module.exports = MenuAction

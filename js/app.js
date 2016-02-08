@@ -1,6 +1,6 @@
-const React = require('react')
-const ReactDOM = require('react-dom')
-const Menu = require('./components/Menu')
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Menu from './components/Menu'
 
 ReactDOM.render(
   <Menu />,

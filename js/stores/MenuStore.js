@@ -1,7 +1,5 @@
-const Flux = require('flux/utils')
+import { MapStore } from 'flux/utils'
 
-class MenuStore extends Flux.MapStore<number, Object> {
+export default class MenuStore extends MapStore<number, Object> {
 
 }
-
-module.exports = MenuStore

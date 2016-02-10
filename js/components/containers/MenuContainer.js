@@ -1,17 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Container } from 'flux/utils'
 
 import MenuStore from '../../stores/MenuStore'
 import Menu from '../views/Menu'
 
-class MenuContainer extends Component {
+class MenuContainer extends React.Component {
   static getStores() {
     return [MenuStore]
   }
 
   static calculateState(prevState) {
     return {
-      categories: MenuStore.categories
+      categories: MenuStore.categories,
+      selected: MenuStore.selected
     }
   }
 

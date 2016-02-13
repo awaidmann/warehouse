@@ -1,3 +1,5 @@
+/* @flow */
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import tapEventPlugin from 'react-tap-event-plugin'

@@ -1,3 +1,5 @@
+/* @flow */
+
 import { Dispatcher } from 'flux'
 
 const dispatch = new Dispatcher()

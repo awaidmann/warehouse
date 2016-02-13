@@ -1,3 +1,5 @@
+/* @flow */
+
 const CategoryName = {
   NOTIFICATIONS: 'Notifications',
   INVENTORY: 'Inventory',

@@ -9,8 +9,5 @@
 [include]
 node_modules/flux/flow/include
 
-[libs]
-lib/actions/
-
 [options]
 module.system=haste

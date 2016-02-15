@@ -2,23 +2,26 @@
 
 import React from 'react'
 import { Container } from 'flux/utils'
+import { List } from 'immutable'
 
 import MenuStore from '../../stores/MenuStore'
 import Menu from '../views/Menu'
+import { MenuCategory } from '../../../lib/index'
 
-class MenuContainer extends React.Component {
+type State = {
+  categories: List<MenuCategory>
+}
+
+class MenuContainer extends React.Component<{}, {}, State> {
   static getStores() {
     return [MenuStore]
   }
 
-  static calculateState(prevState) {
-    return {
-      categories: MenuStore.categories,
-      selected: MenuStore.selected
-    }
+  static calculateState(prevState: State): State {
+    return {categories: MenuStore.getState()}
   }
 
-  render() {
+  render(): ?ReactElement {
     return <Menu categories={ this.state.categories } />
   }
 }

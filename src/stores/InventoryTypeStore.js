@@ -4,16 +4,16 @@ import { Store } from 'flux/utils'
 import { Map } from 'immutable'
 
 import AppDispatcher from '../dispatcher/AppDispatcher'
-import Actions from '../constants/ActionConstants'
+import { Action, ActionType } from '../../lib/index'
 
 class InventoryTypeStore extends Store {
   getInitialState() {
     return Map()
   }
 
-  __onDispatch(action) {
+  __onDispatch(action: Action) {
     switch(action.type) {
-    case Actions.LOAD_INVENTORY_ITEMS:
+    case ActionType.LOAD_INVENTORY_ITEMS:
     }
   }
 

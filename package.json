@@ -2,7 +2,7 @@
   "name": "warehouse",
   "version": "1.0.0",
   "description": "POC: UI components for warehouse project",
-  "main": "js/app.js",
+  "main": "src/app.js",
   "dependencies": {
     "flux": "^2.1.1",
     "immutable": "^3.7.6",
@@ -21,8 +21,8 @@
     "watchify": "^2.1.1"
   },
   "scripts": {
-    "start": "watchify -t [ babelify --presets [ react es2015 ] ] -o js/bundle.js -v -d js/app.js",
-    "build": "browserify . -t [ babelify --presets [ react es2015 ] ] > js/bundle.js",
+    "start": "watchify -t [ babelify --presets [ react es2015 stage-0] ] -o src/bundle.js -v -d src/app.js",
+    "build": "rm src/bundle.js && browserify . -t [ babelify --presets [ react es2015 stage-0] ] > src/bundle.js",
     "test": "jest"
   },
   "author": "Alan Waidmann",

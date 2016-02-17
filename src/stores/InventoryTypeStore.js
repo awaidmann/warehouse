@@ -1,21 +1,29 @@
 /* @flow */
 
-import { Store } from 'flux/utils'
-import { Map } from 'immutable'
+import { ReduceStore } from 'flux/utils'
+import { List } from 'immutable'
 
 import AppDispatcher from '../dispatcher/AppDispatcher'
-import { Action, ActionType } from '../../lib/index'
+import { Action, LoadAction, ActionType, InventoryType } from '../../lib/index'
 
-class InventoryTypeStore extends Store {
-  getInitialState() {
-    return Map()
+type State = List<InventoryType>
+
+class InventoryTypeStore extends ReduceStore<InventoryType> {
+  getInitialState(): State {
+    return List()
   }
 
-  __onDispatch(action: Action) {
-    switch(action.type) {
-    case ActionType.LOAD_INVENTORY_ITEMS:
+  reduce(state: State, action: Action): State {
+    if (action instanceof LoadAction) {
+      switch (action.get('type')) {
+        case ActionType.LOAD_INVENTORY_TYPES:
+          return action.payload
+        default:
+          return state
+      }
     }
   }
+
 
 }
 

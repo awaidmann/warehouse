@@ -13,11 +13,6 @@ import { MenuCategory, ActionType } from '../../../lib/index'
 type Props = List<MenuCategory>
 
 export default class Menu extends React.Component<{}, Props, {}> {
-  // constructor(props: Props) {
-  //   super(props)
-  //
-  //   this.categories = props.categories
-  // }
 
   categoryItems(): Array<?ReactElement> {
     if (this.props.categories !== undefined) {

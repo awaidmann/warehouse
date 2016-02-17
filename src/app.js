@@ -4,7 +4,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import tapEventPlugin from 'react-tap-event-plugin'
 
-import Emit from '../mockServices/EmitCategories'
+import { Categories, InventoryTypes } from '../mockServices/index'
 import Menu from './components/containers/MenuContainer'
 
 tapEventPlugin()
@@ -14,4 +14,5 @@ ReactDOM.render(
   document.getElementById('react')
 )
 
-Emit()
+Categories()
+InventoryTypes()

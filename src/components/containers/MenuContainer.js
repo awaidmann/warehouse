@@ -5,24 +5,21 @@ import { Container } from 'flux/utils'
 import { List } from 'immutable'
 
 import Menu from '../views/Menu'
-import InventoryList from '../views/InventoryList'
-import { MenuStore, InventoryTypeStore } from '../../stores/index'
-import { MenuCategory, Payload } from '../../../lib/index'
+import { MenuStore } from '../../stores/index'
+import { MenuCategory } from '../../../lib/index'
 
 type State = {
   categories: List<MenuCategory>,
-  displayItems: List<typeof Payload>
 }
 
 class MenuContainer extends React.Component<{}, {}, State> {
   static getStores() {
-    return [MenuStore, InventoryTypeStore]
+    return [MenuStore]
   }
 
   static calculateState(prevState: State): State {
     return {
-      categories: MenuStore.getState(),
-      displayItems: InventoryTypeStore.getState()
+      categories: MenuStore.getState()
     }
   }
 
@@ -30,7 +27,6 @@ class MenuContainer extends React.Component<{}, {}, State> {
     return (
       <div>
         <Menu categories={ this.state.categories } />
-        <InventoryList listItems={ this.state.displayItems }/>
       </div>
       )
   }

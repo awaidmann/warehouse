@@ -6,11 +6,12 @@ import tapEventPlugin from 'react-tap-event-plugin'
 
 import { Categories, InventoryTypes } from '../mockServices/index'
 import Menu from './components/containers/MenuContainer'
+import List from './components/containers/DisplayListContainer'
 
 tapEventPlugin()
 
 ReactDOM.render(
-  <Menu />,
+  <List />,
   document.getElementById('react')
 )
 

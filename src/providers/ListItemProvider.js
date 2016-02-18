@@ -34,6 +34,7 @@ export default class ListItemProvider<T: Record> {
         if (root && root instanceof Record) {
           return (<MUIListItem
               key={prevIndex}
+              value={root.get('id')}
               index={prevIndex}
               primaryText={root.get('title')}
               nestedItems={nested}

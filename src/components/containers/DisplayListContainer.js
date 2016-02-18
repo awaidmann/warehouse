@@ -16,7 +16,7 @@ import { InventoryTypeStore } from '../../stores/index'
 const SelectableList = SelectableContainerEnhance(MUIList)
 
 type State = {
-  displayItems: List<typeof Payload>,
+  displayItems: List<Payload>,
   selectedIndex: string,
 }
 
@@ -32,7 +32,7 @@ class DisplayListContainer extends Component<{}, {}, State> {
     }
   }
 
-  static inventoryHierarchy(listItems: ?List<typeof Payload>): Array<?ReactElement> {
+  static inventoryHierarchy(listItems: ?List<Payload>): Array<?ReactElement> {
     if (listItems) {
       return ListItemProvider.buildListComponents(ListItemProvider.buildHierarchy(listItems))
     }

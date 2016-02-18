@@ -10,7 +10,7 @@ export default class ListItemProvider<T: Record> {
   static buildHierarchy(listItems: List<T>): ?KeyedIterable<string, any> {
     function recBuild(recItems: List<T>, depth: number): ?KeyedIterable<string, any> {
       if (!recItems.isEmpty()){
-        return recItems.groupBy( inventory => inventory.get('typePath').get(depth, LIST_ROOT_KEY) )
+        return recItems.groupBy( inventory => inventory.get('indexPath').get(depth, LIST_ROOT_KEY) )
           .mapEntries( ([k, group]) => {
             if (k === LIST_ROOT_KEY) { return [k, group] }
             return [k, recBuild(group, depth + 1)] //Can we make this tail recursive? Maybe if recBuild accepts k and then returns [k, newGroup]?

@@ -17,11 +17,10 @@ export default class Menu extends React.Component<{}, Props, {}> {
   categoryItems(): Array<?ReactElement> {
     if (this.props.categories !== undefined) {
       return this.props.categories.map((category) => {
-        const name = category.get('name')
         return (
           <MenuItem
-            key={name}
-            primaryText={name}
+            key={category.get('id')}
+            primaryText={category.get('title')}
             onTouchTap={this._handleTapped}
           />
         )

@@ -22,6 +22,8 @@ class InventoryTypeStore extends ReduceStore<InventoryType> {
           return state
       }
     }
+
+    return state
   }
 
 

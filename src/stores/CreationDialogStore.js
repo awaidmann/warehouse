@@ -1,33 +1,59 @@
 /* @flow */
 
-import { ReduceStore } from 'flux/utils'
-import { Map } from 'immutable'
+import { MapStore } from 'flux/utils'
+import { Map, List } from 'immutable'
 
 import AppDispatcher from '../dispatcher/AppDispatcher'
-import { Action, TextEditAction, ActionType } from '../../lib/index'
+import { Action, TextEditAction, SelectAction, ActionType } from '../../lib/index'
 
-type State = {
-  fieldValues: Map<string, string>
-}
+const FIELD_VALUES_KEY = 'fieldValues'
+const FOCUSED_KEY = 'focusedFieldRef'
+const AUTO_COMPLETE_KEY = 'autoCompDataSrc'
 
-class CreationDialogStore extends ReduceStore<State> {
+type State = Map<string, any>
+
+class CreationDialogStore extends MapStore<string, any> {
   getInitialState(): State {
-    return { fieldValues: Map() }
+    return Map({
+      fieldValues: Map(),
+      focusedFieldRef: undefined,
+      autoCompDataSrc: List(),
+    })
   }
 
   reduce(state: State, action: Action): State {
     if (action instanceof TextEditAction) {
       switch(action.get('type')) {
         case ActionType.TEXT_DID_CHANGE:
-          return state
+          //could store prevValue in fieldValues, fieldValues: {'ref': {prev:'', crnt:''} }
+          const updateText = state.get(FIELD_VALUES_KEY).set(action.get('textFieldRef'), action.get('crntText'))
+          return state.set(FIELD_VALUES_KEY, updateText)//CreationDialogStore.updateAutoCompletionDataSource(updateText, action.get('crntText'))
         case ActionType.TEXT_DID_FOCUS:
-          return state
+          const updateFocus = action.get('textFieldRef')
+          return state.set(FOCUSED_KEY, updateFocus)//CreationDialogStore.updateAutoCompletionDataSource(updateFocus, '')
         case ActionType.TEXT_DID_LOSE_FOCUS:
-          return state
-        default:
-          return state
+          if (action.get('textFieldRef') === state.get(FOCUSED_KEY)) { // check in case actions are received out of order
+            return state.merge({ focusedFieldRef: undefined, autoCompDataSrc: List() })
+          }
       }
+    } else if (action instanceof SelectAction) {
+        switch (action.get('type')) {
+          case ActionType.SELECT_LIST_ITEM:
+            const indexPath = action.get('indexPath')
+            const fieldRef = indexPath ? indexPath.get(0) : undefined
+            const compIndex = indexPath ? indexPath.get(1) : undefined
+            if (fieldRef && compIndex && state.autoCompDataSrc) {
+              const selected = state.get(AUTO_COMPLETE_KEY).get(compIndex)
+              const updatedSlxn = state.get(FIELD_VALUES_KEY).set(fieldRef, selected)
+              return state.set(FIELD_VALUES_KEY, updatedSlxn)//CreationDialogStore.updateAutoCompletionDataSource(state, selected)
+            }
+        }
     }
+    return state
+  }
+
+  static updateAutoCompletionDataSource(state: State, updatedText: string): State {
+    return state
   }
 }
 

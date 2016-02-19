@@ -30,6 +30,8 @@ class MenuStore extends ReduceStore<MenuCategory> {
     //     default:
     //   }
     }
+
+    return state
   }
 }
 

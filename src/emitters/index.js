@@ -1,3 +1,3 @@
 /* @flow */
 
-export { default as TextFieldEmitter } from './TextFieldEmitter'
+export { default as FormEmitter } from './FormEmitter'

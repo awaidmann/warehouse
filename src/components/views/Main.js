@@ -7,19 +7,27 @@ import { DisplayListContainer, CreationDialogContainer } from '../index'
 export default class Main extends Component {
   render(): ?ReactElement {
     return (
-      <div>
-      
-        <CreationDialogContainer style={Styles.dialog} />
+      <div style={style.container}>
+        <DisplayListContainer style={style.list}/>
+        <div style={style.dialog}>
+        <CreationDialogContainer  />
+        </div>
       </div>
     )
   }
 }
 
-const Styles = {
+const style = {
+  container: {
+
+  },
+
   list: {
+
   },
 
   dialog: {
-    flex: 1,
+    position: 'relative',
+    left: 255,
   },
 }
